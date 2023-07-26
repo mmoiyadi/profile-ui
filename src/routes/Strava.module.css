@@ -1,0 +1,24 @@
+.table {
+    border: 2px solid #a990fb;
+    width: 800px;
+    height: 200px;
+}
+ 
+.th {
+    border-bottom: 1px solid #8c6cf7;
+}
+ 
+.td {
+    text-align: center;
+}
+
+.stcontainer {
+    list-style: none;
+    max-width: 50rem;
+    margin: 1rem auto;
+    padding: 1rem 0;
+    /* display: grid; */
+    gap: 1rem;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
+  }
