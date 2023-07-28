@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { MdPostAdd, MdOutlinePerson, MdDirectionsRun, MdOutlineHome } from "react-icons/md";
+import { MdPostAdd, MdOutlinePerson, MdOutlineHome } from "react-icons/md";
+import {FaHeartbeat, FaBookReader} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import classes from "./MainHeader.module.css";
@@ -21,8 +22,14 @@ function MainHeader(props) {
       </p>
       <p>
         <Link to="/fitness" className={classes.button} >
-          <MdDirectionsRun size={18} />
+          <FaHeartbeat size={18} />
           Fitness
+        </Link>
+      </p>
+      <p>
+        <Link to="/reading" className={classes.button} >
+          <FaBookReader size={18} />
+          Reading
         </Link>
       </p>
       <p>

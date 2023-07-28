@@ -1,3 +1,5 @@
+// This is not being used curently in the App but keeping it anyways so that we know how to use svg as react component
+
 function StravaLogo() {
   return (
     <svg

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { MdDirectionsRun } from "react-icons/md";
+import {FaStrava, FaHeartbeat} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import StravaLogo from "./StravaLogo";
+//import StravaLogo from "./StravaLogo";
 
 import classes from "./FitnessHeader.module.css";
 
@@ -10,20 +11,21 @@ function FitnessHeader(props) {
     <header className={classes.header}>
       <h1 className={classes.logo}>
         {props.children}
-        <MdDirectionsRun />
+        <FaHeartbeat />
         Fitness
       </h1>
 
       <p>
         <Link to="/fitness/strava" className={classes.button}>
-        <StravaLogo/>
+        {/* <StravaLogo/> */}
+        <FaStrava/>
           Strava
         </Link>
       </p>
       <p>
-        <Link to="/fitness" className={classes.button}>
+        <Link to="/fitness/marathon" className={classes.button}>
           <MdDirectionsRun size={18} />
-          Fitness
+          Marathon
         </Link>
       </p>
     </header>
