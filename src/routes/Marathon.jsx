@@ -2,6 +2,8 @@ import classes from "./Marathon.module.css";
 import { Chrono } from "react-chrono";
 
 import pic from "../assets/marathon/cme/pic.jpg";
+import img5k from "../assets/marathon/5K.png";
+import img10k from "../assets/marathon/10K.png";
 function Marathon() {
   const items = [
     {
@@ -14,7 +16,8 @@ function Marathon() {
       media: {
         type: "IMAGE",
         source: {
-          url: "https://www.dropbox.com/scl/fi/81tlg1i9wtsir7xruueeu/H2O_Run3-edited.jpg?rlkey=eej6k78u46f5eclsbo09hldgb&raw=1",
+          // url: "https://www.dropbox.com/scl/fi/81tlg1i9wtsir7xruueeu/H2O_Run3-edited.jpg?rlkey=eej6k78u46f5eclsbo09hldgb&raw=1",
+          url: pic,
         },
       },
     },
@@ -56,7 +59,7 @@ function Marathon() {
       media: {
         type: "IMAGE",
         source: {
-          url: "https://www.dropbox.com/scl/fi/xb6t25u1njm7x7yhwkzr7/PRBD00980.jpg?rlkey=n6wopsiriczql2pzeqoejlawn&raw=1",
+          url: "https://www.dropbox.com/scl/fi/fwa1a4o82qeav3i8udq4p/1097_PoonawallaCleanCityMarathon.png?rlkey=6raijf1a21n9rut1hnsr18jh2&raw=1",
         },
       },
     },
@@ -70,7 +73,17 @@ function Marathon() {
         scrollable="true"
         // textOverlay="true"
         cardHeight="300"
-      />
+      >
+        <div className="chrono-icons">
+          <img width={100} src={img5k} alt="5k" />
+          <img src={img10k} alt="5k" />
+          <img src={img10k} alt="5k" />
+          <img src={img10k} alt="5k" />
+        </div>
+        <div>
+          <p>Lorem Ipsum. Lorem Ipsum. Lorem Ipsum</p>
+        </div>
+      </Chrono>
     </div>
 
     // <div className={classes.container}>

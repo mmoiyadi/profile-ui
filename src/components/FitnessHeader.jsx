@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { MdDirectionsRun } from "react-icons/md";
-import {FaStrava, FaHeartbeat} from "react-icons/fa";
+import { FaHeartbeat} from "react-icons/fa";
+import {IoMdStats} from "react-icons/io";
 import { Link } from "react-router-dom";
 //import StravaLogo from "./StravaLogo";
 
@@ -18,8 +19,8 @@ function FitnessHeader(props) {
       <p>
         <Link to="/fitness/strava" className={classes.button}>
         {/* <StravaLogo/> */}
-        <FaStrava/>
-          Strava
+        <IoMdStats/>
+          Stats
         </Link>
       </p>
       <p>
