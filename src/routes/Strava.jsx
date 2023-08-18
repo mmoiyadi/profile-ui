@@ -1,67 +1,96 @@
 import { useLoaderData } from "react-router-dom";
 import classes from "./Strava.module.css";
-import { FaSwimmer, FaRunning, FaBicycle } from "react-icons/fa";
-import {IoMdBicycle} from "react-icons/io"
-import {BiSwim} from "react-icons/bi"
+import { FaRunning, FaHashtag, FaMap, FaRegClock } from "react-icons/fa";
+import { IoMdBicycle } from "react-icons/io";
+import { BiSwim } from "react-icons/bi";
+import Switch from "react-switch";
+import { useState } from "react";
+import "../Common.css";
+
 
 const METERS_IN_KM = 1000;
 const SECONDS_IN_HOUR = 3600;
 
 function formatDistance(distanceInMeter) {
-  return (distanceInMeter / METERS_IN_KM).toFixed(1) + " km";
+  return (distanceInMeter / METERS_IN_KM).toFixed(1) + " KM";
 }
 
 function formatDuration(durationInMin) {
-  return (durationInMin / SECONDS_IN_HOUR).toFixed(1) + " hr";
+  return (durationInMin / SECONDS_IN_HOUR).toFixed(1) + " HRS";
 }
 
 function Strava() {
   const stravaData = useLoaderData();
+  const [isAllTime, setIsAllTime] = useState(false);
+  const [runStatsObj, setRunStatsObj] = useState(stravaData.ytdRun);
+  const [swimStatsObj, setSwimStatsObj] = useState(stravaData.ytdSwim);
+  const [rideStatsObj, setRideStatsObj] = useState(stravaData.ytdRide);
+
+
+  function handleChange(checked) {
+    console.log(checked);
+    setIsAllTime(checked);
+    if (checked) {
+      setRunStatsObj(stravaData.allRun);
+      setSwimStatsObj(stravaData.allSwim);
+      setRideStatsObj(stravaData.allRide);
+    } else {
+      setRunStatsObj(stravaData.ytdRun);
+      setSwimStatsObj(stravaData.ytdSwim);
+      setRideStatsObj(stravaData.ytdRide);
+    }
+  }
+  
+ 
   return (
     <>
+    
       <div className={classes.stcontainer}>
-        <h3>Current Year Stats</h3>
-        <table className={classes.table}>
-          <th className={classes.th}>&nbsp;</th>
-          <th className={classes.th}>Count</th>
-          <th className={classes.th}>Distance</th>
-          <th className={classes.th}>Moving Time</th>
+        {isAllTime && <h3>All Time Stats</h3>}
+        {!isAllTime && <h3>Current Year Stats</h3>}
+        <label style={{ display: "inline" }}>
+          <span></span>
+          <Switch
+            checkedIcon={false}
+            uncheckedIcon={false}
+            onChange={handleChange}
+            checked={isAllTime}
+          />
+        </label>
+        <table>
+          <th>&nbsp;</th>
+          <th title='Count'><FaHashtag/></th>
+          <th title='Distance'><FaMap/></th>
+          <th title='Moving Time'><FaRegClock/></th>
           <tr>
-            <td className={classes.td}>
+            <td title="Run">
               <FaRunning />
             </td>
-            <td className={classes.td}>{stravaData.run.count}</td>
-            <td className={classes.td}>
-              {formatDistance(stravaData.run.distance)}
-            </td>
-            <td className={classes.td}>
-              {formatDuration(stravaData.run.movingTime)}
-            </td>
+            <td>{runStatsObj.count}</td>
+
+            <td>{formatDistance(runStatsObj.distance)}</td>
+            <td>{formatDuration(runStatsObj.movingTime)}</td>
           </tr>
           <tr>
-            <td className={classes.td}>
+            <td title="Swim">
               <BiSwim />
             </td>
-            <td className={classes.td}>{stravaData.swim.count}</td>
-            <td className={classes.td}>
-              {formatDistance(stravaData.swim.distance)}
-            </td>
-            <td className={classes.td}>
-              {formatDuration(stravaData.swim.movingTime)}
-            </td>
+
+            <td>{swimStatsObj.count}</td>
+
+            <td>{formatDistance(swimStatsObj.distance)}</td>
+            <td>{formatDuration(swimStatsObj.movingTime)}</td>
           </tr>
 
           <tr>
-            <td className={classes.td}>
+            <td title="Ride">
               <IoMdBicycle />
             </td>
-            <td className={classes.td}>{stravaData.ride.count}</td>
-            <td className={classes.td}>
-              {formatDistance(stravaData.ride.distance)}
-            </td>
-            <td className={classes.td}>
-              {formatDuration(stravaData.ride.movingTime)}
-            </td>
+
+            <td>{rideStatsObj.count}</td>
+
+            <td>{formatDistance(rideStatsObj.distance)}</td>
+            <td>{formatDuration(rideStatsObj.movingTime)}</td>
           </tr>
         </table>
 
@@ -91,6 +120,7 @@ function Strava() {
             style={{ marginLeft: "2px", verticalAlign: "text-bottom" }}
           />
         </a>
+        
       </div>
     </>
   );

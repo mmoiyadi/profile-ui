@@ -4,6 +4,7 @@ import {FaHeartbeat, FaBookReader} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import classes from "./MainHeader.module.css";
+import ProfilePic from "./ProfilePic";
 
 function MainHeader(props) {
   return (
@@ -11,6 +12,7 @@ function MainHeader(props) {
       <h1 className={classes.logo}>
         {props.children}
         <MdOutlinePerson />
+        <ProfilePic />
         Profile
       </h1>
       

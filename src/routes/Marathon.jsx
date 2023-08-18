@@ -5,33 +5,36 @@ import pic from "../assets/marathon/cme/pic.jpg";
 import img5k from "../assets/marathon/5K.png";
 import img10k from "../assets/marathon/10K.png";
 function Marathon() {
+
+  function itemSelectHandler(data){
+    console.log("item selected", data);
+  }
+
   const items = [
     {
       title: "April 2018",
       cardTitle: "H2O Run",
       url: "http://www.history.com",
       cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      cardDetailedText: "5K",
-      media: {
-        type: "IMAGE",
-        source: {
-          // url: "https://www.dropbox.com/scl/fi/81tlg1i9wtsir7xruueeu/H2O_Run3-edited.jpg?rlkey=eej6k78u46f5eclsbo09hldgb&raw=1",
-          url: pic,
-        },
-      },
+        "My first ever marathon.",
+      // media: {
+      //   type: "IMAGE",
+      //   source: {
+      //     // url: "https://www.dropbox.com/scl/fi/81tlg1i9wtsir7xruueeu/H2O_Run3-edited.jpg?rlkey=eej6k78u46f5eclsbo09hldgb&raw=1",
+      //     //url: pic,
+      //   },
+      // },
     },
     {
       title: "July 2018",
       cardTitle: "NIO Vision Marathon Run",
       url: "http://www.history.com",
       cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      cardDetailedText: "10K",
+        "Second marathon, first 10K run",
       media: {
         type: "IMAGE",
         source: {
-          url: "https://www.dropbox.com/scl/fi/26uyl25rbytkdrt3wrx7p/IMG_20180722_082639.jpg?rlkey=h2db7j8w9ek8q803ralpfk6tb&raw=1",
+          url: "https://www.dropbox.com/scl/fi/twro75oiyplomncp6vg96/Bib_2212_certificate-edited.png?rlkey=z2ehxxudgqqnv0jommde6veyb&raw=1",
         },
       },
     },
@@ -40,12 +43,11 @@ function Marathon() {
       cardTitle: "Lake Marathon CME, Pune",
       url: "http://www.history.com",
       cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      cardDetailedText: "10K",
+        "Another 10K run! This time inside the serene campus of CME, Pune",
       media: {
         type: "IMAGE",
         source: {
-          url: "https://www.dropbox.com/scl/fi/z0qw28eukbjkww3z3o0yq/IMG_20180902_063133.jpg?rlkey=kfk28wx3zt0v4ogw182wado2n&raw=1",
+          url: "https://www.dropbox.com/scl/fi/ajt9pz0lthwwp0qgzie29/TimingCertificate.png?rlkey=a02s5j9sf8f9actis8h06ytb1&raw=1",
         },
       },
     },
@@ -54,8 +56,7 @@ function Marathon() {
       cardTitle: "Poonawalla Clean City Marathon",
       url: "http://www.history.com",
       cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      cardDetailedText: "10K",
+        "Best timing for 10K",
       media: {
         type: "IMAGE",
         source: {
@@ -66,13 +67,30 @@ function Marathon() {
   ];
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{fontFamily: "'Poppins', sans-serif"}}>
       <Chrono
-        items={items}
+        items={items} 
+        theme={{
+          primary: '#FC5200',
+          secondary: '#FC5200',
+          cardBgColor: '#bfbfbf',
+          titleColor: '#FC5200',
+          titleColorActive: '#2a2630',
+        }}
         mode="VERTICAL_ALTERNATING"
+        fontSizes={{
+          cardSubtitle: '0.8rem',
+          cardText: '1rem',
+          cardTitle: '1rem',
+          title: '1rem',
+        }}
         scrollable="true"
         // textOverlay="true"
         cardHeight="300"
+        cardWidth="500" 
+        borderLessCards="false"
+        lineWidth = "1"
+        onItemSelected = {itemSelectHandler}
       >
         <div className="chrono-icons">
           <img width={100} src={img5k} alt="5k" />
@@ -80,9 +98,9 @@ function Marathon() {
           <img src={img10k} alt="5k" />
           <img src={img10k} alt="5k" />
         </div>
-        <div>
+        {/* <div>
           <p>Lorem Ipsum. Lorem Ipsum. Lorem Ipsum</p>
-        </div>
+        </div> */}
       </Chrono>
     </div>
 
